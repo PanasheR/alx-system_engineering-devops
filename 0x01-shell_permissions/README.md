@@ -1,0 +1,1 @@
+This folder contains files with scripts that contain different shell permissions.
