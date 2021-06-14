@@ -1,0 +1,1 @@
+This folder contains shell, I/O redirections and filters commands.
