@@ -1,2 +1,2 @@
 #!/bin/bash
-cut -d$ -f3 iacta
+sed -n '3p' iacta
