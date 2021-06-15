@@ -1,3 +1,2 @@
 #!/bin/bash
-read -p "Enter list of words" 
-echo | sort | uniq 
+sort | uniq -u
