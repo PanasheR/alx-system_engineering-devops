@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# This script displays the content of the current directory in a list
+# where only the part of the name after the fist dash is displayed
+shopt -u dotglob
+for file in *
+do
+    if [ -e "$file" ]
+    then
+	echo "$file" | cut -d "-" -f 2-
+    fi
+done
