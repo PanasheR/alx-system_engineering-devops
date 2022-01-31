@@ -27,4 +27,4 @@ if __name__ == "__main__":
                                                         TOTAL_NUMBER_OF_TASKS))
 
     for i in tasks:
-        print("\t {}".format(i))
+        print("\t{}".format(i))
