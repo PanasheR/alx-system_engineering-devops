@@ -4,9 +4,10 @@
 extending the Python script to export data in the CSV format.
 """
 
+import csv
 import requests
 from sys import argv
-import csv
+
 
 if __name__ == "__main__":
     data = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
