@@ -17,8 +17,8 @@ if __name__ == "__main__":
         if i['id'] == int(argv[1]):
             EMPLOYEE_NAME = i['username']
 
-    with open(argv[1] + '.csv', 'w', newline='') as file:
-        wrt = csv.writer(file, quoting=csv.QUOTE_ALL)
+    with open(argv[1] + '.csv', 'w', newline='') as USER_ID:
+        wrt = csv.writer(USER_ID, quoting=csv.QUOTE_ALL)
 
         for i in data:
             row = []
