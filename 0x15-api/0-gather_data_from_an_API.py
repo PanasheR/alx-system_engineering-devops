@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+
+"""
+script using this REST API, for a given employee ID,
+returns information about his/her TODO list progress.
+"""
+
 import requests
 from sys import argv
 
@@ -27,4 +33,4 @@ if __name__ == "__main__":
                                                         TOTAL_NUMBER_OF_TASKS))
 
     for i in tasks:
-        print("     {}".format(i))
+        print("\t {}".format(i))
