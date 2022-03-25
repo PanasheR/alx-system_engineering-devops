@@ -8,23 +8,18 @@ import requests
 from sys import argv
 
 if __name__ == "__main__":
-    data = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
-    data2 = requests.get('https://jsonplaceholder.typicode.com/users').json()
+    site_url = "https://jsonplaceholder.typicode.com"
+    user_id = int(sys.argv[1])
+    data = requests.get(site_url + "/users/{}".format(user_id))
+    todo_list = requests.get(site_url + '/todos')
+    name = data.json().get('username')
+    file_name = sys.argv[1] + '.csv'
 
-    for i in data2:
-        if i['id'] == int(argv[1]):
-            EMPLOYEE_NAME = i['username']
-
-    with open(argv[1] + '.csv', 'w', newline='') as file:
-        writ = csv.writer(file, quoting=csv.QUOTE_ALL)
-
-        for i in data:
-
-            row = []
-            if i['userId'] == int(argv[1]):
-                row.append(i['userId'])
-                row.append(EMPLOYEE_NAME)
-                row.append(i['completed'])
-                row.append(i['title'])
-
-                writ.writerow(row)
+    with open(file_name, mode='w') as f:
+        writer = csv.writer(f, delimiter=',', quotechar='"',
+                            quoting=csv.QUOTE_ALL,
+                            lineterminator='\n')
+        for todo in todo_list.json():
+            if todo.get('userId') == user_id:
+                writer.writerow([user_id, name, str(todo.get('completed')),
+                                todo.get('title')])
