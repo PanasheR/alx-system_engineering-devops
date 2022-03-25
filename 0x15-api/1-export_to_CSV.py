@@ -7,16 +7,24 @@ import csv
 import requests
 from sys import argv
 
-if __name__ == '__main__':
-    user_id = argv[1]
-    data_url = "https://jsonplaceholder.typicode.com/users/{}".format(user_id)
-    user = requests.get(data_url, verify=False).json()
-    data_url = "https://jsonplaceholder.typicode.com/todos?userId={}".format(
-        user_id)
-    too_list = requests.get(data_url, verify=False).json()
-    with open("{}.csv".format(user_id), 'w', newline='') as f:
-        tasks = csv.writer(f, quoting=csv.QUOTE_ALL)
-        for t in todo:
-            tasks.writerow([int(user_id), user.get('username'),
-                                 t.get('completed'),
-                                 t.get('title')])
+if __name__ == "__main__":
+    data = requests.get('https://jsonplaceholder.typicode.com/todos/').json()
+    data2 = requests.get('https://jsonplaceholder.typicode.com/users').json()
+
+    for i in data2:
+        if i['id'] == int(argv[1]):
+            EMPLOYEE_NAME = i['username']
+
+    with open(argv[1] + '.csv', 'w', newline='') as file:
+        writ = csv.writer(file, quoting=csv.QUOTE_ALL)
+
+        for i in data:
+
+            row = []
+            if i['userId'] == int(argv[1]):
+                row.append(i['userId'])
+                row.append(EMPLOYEE_NAME)
+                row.append(i['completed'])
+                row.append(i['title'])
+
+                writ.writerow(row)
