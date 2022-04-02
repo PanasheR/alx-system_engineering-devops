@@ -4,9 +4,9 @@ import requests
 
 
 def number_of_subscribers(subreddit):
-    """ Returns the num of subscribers """
+    """functions returns subscribers"""
     rd = requests.get("https://reddit.com/r/{}/about.json".format(subreddit),
-                     headers={"User-Agent": "custom"})
+                      headers={"User-Agent": "custom"})
     if (rd.status_code == 200):
         return rd.json().get("data").get("subscribers")
     else:
