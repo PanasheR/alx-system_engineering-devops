@@ -1,15 +1,14 @@
 #!/usr/bin/python3
-"""Querying Reddit API"""
+"""Script to query Reddit using API"""
 import requests
 
 
 def number_of_subscribers(subreddit):
-    """function that queries the Reddit API and returns the number
-       of subscribers"""
+    """function queries Reddit API and returns subscribers"""
 
-    result = requests.get("https://www.reddit.com/r/{}/about.json"
-                          .format(subreddit))
-    if result.status_code >= 300:
+    red = requests.get("https://www.reddit.com/r/{}/about.json"
+                       .format(subreddit))
+    if red.status_code >= 300:
         return 0
 
-    return result.json().get("data").get("subscribers")
+    return red.json().get("data").get("subscribers")
